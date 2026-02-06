@@ -1,0 +1,44 @@
+include: package:flutter_lints/flutter.yaml
+
+plugins:
+  riverpod_lint: ^3.0.0-dev.4
+
+formatter:
+  trailing_commas: preserve
+
+analyzer:
+  plugins:
+    - custom_lint
+
+
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.gr.dart"
+    - "**/*.gen.dart"
+    
+linter:
+  rules:
+    - prefer_expression_function_bodies
+    - prefer_final_fields       
+    - prefer_final_locals
+    - prefer_final_parameters
+    - prefer_final_in_for_each
+    - prefer_const_constructors
+    - prefer_const_literals_to_create_immutables
+    - prefer_const_declarations
+    - prefer_single_quotes
+    - avoid_unnecessary_containers
+    - unnecessary_this
+    - unnecessary_new
+    - unnecessary_overrides
+    - unnecessary_null_checks
+    - unnecessary_lambdas
+    - prefer_typing_uninitialized_variables
+    - sort_child_properties_last
+    - sort_constructors_first
+    - use_key_in_widget_constructors
+    - sized_box_for_whitespace
+    - curly_braces_in_flow_control_structures
+    - avoid_classes_with_only_static_members
+    - avoid_print
