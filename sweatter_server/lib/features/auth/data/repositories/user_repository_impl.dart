@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:sweatter_server/features/auth/data/db/user_database.dart';
+import 'package:sweatter_server/features/auth/domain/entities/user_entiti.dart';
 import 'package:sweatter_server/features/auth/domain/repositories/i_user_repository.dart';
 
 final class UserRepositoryImpl implements IUserRepository {
@@ -20,4 +21,22 @@ final class UserRepositoryImpl implements IUserRepository {
           passwordHash: Value(passwordHash),
         ),
       );
+
+  @override
+  Future<User?> findUserByEmail({required final String email}) async {
+    final UserTableData? row =
+        await (db.select(db.userTable)
+              ..where((final $UserTableTable user) => user.email.equals(email)))
+            .getSingleOrNull();
+
+    if (row == null) return null;
+
+    return User(
+      id: row.id,
+      name: row.name,
+      email: row.email,
+      passwordHash: row.passwordHash,
+      createdAt: row.createdAt,
+    );
+  }
 }
