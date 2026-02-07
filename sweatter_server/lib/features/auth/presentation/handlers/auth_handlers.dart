@@ -39,7 +39,7 @@ class AuthHandler {
     try {
       final User user = await service.login(
         email: data['email'],
-        password: data[' password'],
+        password: data['password'],
       );
       return Response.ok(
         jsonEncode({'id': user.id, 'name': user.name, 'email': user.email}),
